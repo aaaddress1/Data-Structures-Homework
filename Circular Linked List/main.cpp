@@ -144,11 +144,11 @@ int main(void)
 
 	cout << "Overloading Assignment B = A";
 	NodeChain ChB = ChA;
-    ChB.OutputChain();
+    	ChB.OutputChain();
 
-    cout << "Copy Constructor";
+    	cout << "Copy Constructor";
 	NodeChain ChC(ChA);
 	ChC.OutputChain();
-    system("PAUSE");//Doesn't works on OSX Commandline.
+    	system("PAUSE");//Doesn't works on OSX Commandline.
 	return 0;
 }
