@@ -32,19 +32,19 @@ public:
 	
 	NodeChain& ExchgLeftCount(int k) 
 	{
-        Node *temp = First;
-        Node* NewLastLink = First;
-        if (k > number) return *this;//index K must in range(small than count of current chain)
-        if (k <= 1)     return *this;// K need be an index or bigger than 1.(index 1 is current chain)
-        for (int i = 0; i < k ;temp = temp->link,i++);//Looking for Node K
-        for (int i = 1; i < k ;NewLastLink = NewLastLink->link,i++);//for Node (K-1)
-        Node* OldFirstLink = this->First->link;//Record current first Node.
-        this->First->link  = temp;//Set current first node to Node K.
-        while (temp->link) temp = temp->link;//Find Lastest Node from Node K.
-        this->Last = NewLastLink;//New last node = K-1
-        temp->link = OldFirstLink;//Lastest Node of Node K, set Next to old first Node.
-        NewLastLink->link = NULL; //Set next of Node (K-1) = NULL(Signed as eof)
-        return *this;
+	        Node *temp = First;
+	        Node* NewLastLink = First;
+	        if (k > number) return *this;//index K must in range(small than count of current chain)
+	        if (k <= 1)     return *this;// K need be an index or bigger than 1.(index 1 is current chain)
+	        for (int i = 0; i < k ;temp = temp->link,i++);//Looking for Node K
+	        for (int i = 1; i < k ;NewLastLink = NewLastLink->link,i++);//for Node (K-1)
+	        Node* OldFirstLink = this->First->link;//Record current first Node.
+	        this->First->link  = temp;//Set current first node to Node K.
+	        while (temp->link) temp = temp->link;//Find Lastest Node from Node K.
+	        this->Last = NewLastLink;//New last node = K-1
+	        temp->link = OldFirstLink;//Lastest Node of Node K, set Next to old first Node.
+	        NewLastLink->link = NULL; //Set next of Node (K-1) = NULL(Signed as eof)
+	        return *this;
 	}
 
 	int GetCount() {return number;}
