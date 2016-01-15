@@ -1,7 +1,7 @@
 /**
-*	Binary Tree: prefix to postfix
+*	Binary Tree: prefix, infix, postfix
 *	working on MacOS g++ and Windows Dev C++
-*	Author:	isu10303118a
+*	Author:	aaaddress1@gmail.com
 *	Date:	2016/1/15
 **/
 #include <deque>
@@ -149,24 +149,20 @@ string convertInfix(char *input,int to)
 
 int main(void)
 {
-	puts( "Input your preOrder , and I'll show you postOrder: " );
-	char userInput[1024] = "*-*b(-c)a(-d)";
-	scanf( "%1023s", userInput );
+	char userInput[1024] = "";
 	char inOrder[1024]	 = {0};
-	string strUserInput = userInput;
-	/*****		Fix Pattern negative number		*****/
-	for (int i = 0; i < strUserInput.size() ; i++)
-	{
-		if ( (strUserInput[i] == '(') && (strUserInput[i+1] == '-') )
-		{
-			strUserInput.erase( i , 1 );//remove '('
-			strUserInput.insert( i+1 , "0" );
-			while (strUserInput[i++] != ')');
-			strUserInput.erase( --i , 1 );//remove ')'
-		}
-	}
-	strcpy( inOrder, convertToInfix((char*)strUserInput.c_str(),prefixTag).c_str() );
+	char choise = '\x00';
+
+	puts( "Choise your input order type:\n[1] preFix\n[2] inFix\n[3] postFix\n" );
+	scanf( "%c" , &choise );
+	puts( "Input your data: " );
+	scanf( "%1023s", userInput );	
+	
+	if ( choise == '1' ) strcpy( inOrder, convertToInfix(userInput,prefixTag).c_str() );
+	if ( choise == '2' ) strcpy( inOrder, userInput );
+	if ( choise == '3' ) strcpy( inOrder, convertToInfix(userInput,postfixTag).c_str() );
 	printf("inOrder:\t%s\n" , inOrder);
+	printf("preOder:\t%s\n" , convertInfix(inOrder, prefixTag).c_str());
 	printf("postOrder:\t%s\n" , convertInfix(inOrder,postfixTag).c_str());
 	return 0;
 }
